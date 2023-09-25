@@ -1,11 +1,25 @@
+// const mongoose = require("mongoose");
+// // const validator = require("validator");
+
+// mongoose.connect(process.env.MONGODB_URL, {
+//   useNewUrlParser: true,
+//   // useCreateIndex: true
+// });
+
 const mongoose = require("mongoose");
-// const validator = require("validator");
 
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  // useCreateIndex: true
-});
+async function dbConnection() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URL, {
+      useNewUrlParser: true,
+    });
+    console.log("connected to db...");
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+module.exports = dbConnection;
 // const me = new User({
 //     name: "     sunay      ",
 //     email:"SUNAY@GMAIL.COM   ",
